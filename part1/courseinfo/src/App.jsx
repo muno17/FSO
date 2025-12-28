@@ -1,113 +1,3 @@
-import {useState} from 'react'
-
-const Display = ({text}) => <div>{text}</div>
-
-const Button = ({onClick, text}) => <button onClick={onClick}>{text}</button>
-
-const App = () => {
-    const anecdotes = [
-        "If it hurts, do it more often.",
-        "Adding manpower to a late software project makes it later!",
-        "The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.",
-        "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.",
-        "Premature optimization is the root of all evil.",
-        "Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.",
-        "Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients.",
-        "The only way to go fast, is to go well.",
-    ];
-
-    const [selected, setSelected] = useState(0);
-    
-    const handleAnecdotes = () => {
-      let rand = Math.round(Math.random() * 10)
-
-      while (rand > 7) {
-        rand = Math.round(Math.random() * 10);
-      }
-      console.log(rand)
-      setSelected(rand)
-    }
-
-    return (
-    <div>
-      <Display text={anecdotes[selected]}/>
-      <Button onClick={handleAnecdotes} text="next anecdote"/>
-    </div>
-    )
-};
-
-export default App;
-
-
-
-/*
-import {useState} from 'react'
-// unicafe
-const Display = ({content}) => <h1>{content}</h1>
-
-const Statistics = ({good, neutral, bad}) => {
-  const all = good + neutral + bad
-
-  if (all == 0) {
-    return <div>No feedback given</div>
-  }
-
-  const average = ((good * 1) + (bad * -1)) / all
-  const positive = (good / all) + ' %'
-  return (
-      <div>
-          <StatisticLine text='good' value={good} />
-          <StatisticLine text='neutral' value={neutral} />
-          <StatisticLine text='bad' value={bad} />
-          <StatisticLine text='all' value={all} />
-          <StatisticLine text='average' value={average} />
-          <StatisticLine text='positive' value={positive} />
-      </div>
-  );
-}
-
-const Button = ({onClick, text}) => <button onClick={onClick}>{text}</button>
-
-const StatisticLine = ({text, value}) => <div>{text} {value}</div>
-
-const App = () => {
-  // save clicks of each button to its own state
-  const [good, setGood] = useState(0)
-  const [neutral, setNeutral] = useState(0)
-  const [bad, setBad] = useState(0)
-
-  const handleGoodClicks = () => {
-    const updatedGood = good + 1
-    setGood(updatedGood)
-  }
-
-  const handleNeutralClicks = () => {
-    const updatedNeutral = neutral + 1
-    setNeutral(updatedNeutral)
-  }
-
-  const handleBadClicks = () => {
-    const updatedBad = bad + 1
-    setBad(updatedBad)
-  }
-
-  return (
-    <div>
-      <Display content="give feedback" />
-      <Button onClick={handleGoodClicks} text="good" />
-      <Button onClick={handleNeutralClicks} text="neutral" />
-      <Button onClick={handleBadClicks} text="bad" />
-      <Display content="statistics" />
-      <Statistics good={good} neutral={neutral} bad={bad}/>
-    </div>
-  )
-}
-
-export default App
-
-*/
-
-
 
 /* ************* examples 2 *****************
 const Display = ({counter}) => <div>{counter}</div>
@@ -214,13 +104,9 @@ const App = () => {
   )
 }
   ************* examples 1 *****************
-/*
+*/
 
-
-
-// ******************* courseinfo *********************
-/*
-import {useState} from 'react'
+// courseinfo
 
 const Header = (props) => {
   console.log(props)
@@ -290,4 +176,3 @@ const App = () => {
 
 
 export default App
-*/
