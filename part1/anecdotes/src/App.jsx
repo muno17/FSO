@@ -2,6 +2,8 @@ import {useState} from 'react'
 
 const Display = ({text}) => <div>{text}</div>
 
+const Header = ({text}) => <h1>{text}</h1>
+
 const Button = ({onClick, text}) => <button onClick={onClick}>{text}</button>
 
 const App = () => {
@@ -16,22 +18,31 @@ const App = () => {
         "The only way to go fast, is to go well.",
     ];
 
-    const [selected, setSelected] = useState(0);
-    
-    const handleAnecdotes = () => {
-      let rand = Math.round(Math.random() * 10)
+    const [selected, setSelected] = useState(0)
+    const [votes, setVotes] = useState(new Array(8).fill(0))
+    const maxVotes = Math.max(...votes)
+    const maxIndex = votes.indexOf(maxVotes)
 
-      while (rand > 7) {
-        rand = Math.round(Math.random() * 10);
-      }
-      console.log(rand)
+    const handleAnecdotes = () => {
+      let rand = Math.floor(Math.random() * (8))
       setSelected(rand)
+    }
+
+    const handleVote = () => {
+      const copy = [...votes]
+      copy[selected] += 1
+      setVotes(copy)
     }
 
     return (
     <div>
+      <Header text={"Anecdote of the day"}/>
       <Display text={anecdotes[selected]}/>
+      <Display text={'has '+votes[selected]+' votes'}/>
+      <Button onClick={handleVote} text="vote"/>
       <Button onClick={handleAnecdotes} text="next anecdote"/>
+      <Header text={"Anecode with most votes"}/>
+      <Display text={anecdotes[maxIndex]}/>
     </div>
     )
 };
